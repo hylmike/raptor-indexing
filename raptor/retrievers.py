@@ -32,8 +32,7 @@ class TreeRetrieverConfig:
         num_layers: int = None,
         start_layer: int = None,
     ) -> None:
-        encoding = tiktoken.encoding_for_model(qa_model_name)
-        tokenizer = tiktoken.get_encoding(encoding)
+        tokenizer = tiktoken.encoding_for_model(qa_model_name)
         self.tokenizer = tokenizer
 
         if select_mode is None:

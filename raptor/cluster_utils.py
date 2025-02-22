@@ -35,7 +35,7 @@ def get_optimal_clusters(
     embeddings: np.ndarray,
     max_clusters: int = 100,
     random_state: int = RANDOM_SEED,
-) -> int:
+):
     """Determine the optimal number of clusters using the Bayesian Information Criterion (BIC) with a Gaussian Mixture Model."""
 
     max_clusters = min(max_clusters, len(embeddings))
@@ -161,8 +161,7 @@ class RaptorClustering(ClusteringAlgorithm):
         max_length_in_cluster: int = 50000,
         threshold: int = 0.1,
     ):
-        encoding = tiktoken.encoding_for_model(llm_model_name)
-        tokenizer = tiktoken.get_encoding(encoding)
+        tokenizer = tiktoken.encoding_for_model(llm_model_name)
         text_embeddings_np = np.array([node.embedding for node in nodes])
 
         clusters = perform_clustering(

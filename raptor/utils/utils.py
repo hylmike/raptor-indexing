@@ -23,8 +23,7 @@ def split_text_with_token_limits(
     Splits the input text into smaller chunks based on the tokenizer and maximum allowed tokens.
     """
 
-    encoding = tiktoken.encoding_for_model(llm_model_name)
-    tokenizer = tiktoken.get_encoding(encoding)
+    tokenizer = tiktoken.encoding_for_model(llm_model_name)
 
     # Split the text into sentences using multiple delimiter patterns
     delimiters = ["[^\.!\?]+[\.|!|\?]\s", "[^\.!\?]+[\.|!|\?]$", "[^\.!\?]+$"]

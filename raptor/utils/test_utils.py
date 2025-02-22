@@ -40,9 +40,8 @@ def test_split_text_with_token_limits():
     max_tokens = 5
     overlap = 1
     expected = ['Hello world.', 'Hello world. This is a test!', 'This is a test! Another sentence?']
-    encoding = "cl100k_base"
-    tokenizer = tiktoken.get_encoding(encoding)
-    with patch('tiktoken.encoding_for_model', return_value=encoding), patch.object(tokenizer, "encode", return_value=[1, 2, 3, 4]):
+    tokenizer = tiktoken.encoding_for_model("gpt-4o-mini")
+    with patch.object(tokenizer, "encode", return_value=[1, 2, 3, 4]):
         assert split_text_with_token_limits(text, llm_model_name, max_tokens, overlap) == expected
 
 
