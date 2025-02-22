@@ -1,0 +1,36 @@
+[project]
+name = "raptor-indexing"
+version = "0.1.0"
+description = "Python library to create RAPTOR indexing for RAG retrieval"
+authors = [
+    {name = "Michael Hua",email = "michael.huayl@yahoo.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "tiktoken (>=0.8.0,<0.9.0)",
+    "tenacity (>=9.0.0,<10.0.0)",
+    "scikit-learn (>=1.6.1,<2.0.0)",
+    "numpy (==2.1)",
+    "umap-learn (>=0.5.7,<0.6.0)",
+    "openai (>=1.61.1,<2.0.0)",
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+ruff = "^0.9.5"
+
+[tool.ruff]
+show-fixes = true
+target-version = "py312"
+line-length = 80
+
+[tool.ruff.lint]
+extend-select = ["N", "UP", "PL", "Q"]
+ignore = ["E501"]
+
