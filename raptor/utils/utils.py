@@ -4,6 +4,7 @@ import numpy as np
 import tiktoken
 from scipy import spatial
 
+from raptor.llm_models import BaseSummaryModel
 from raptor.tree_objects import Node
 
 
@@ -17,13 +18,13 @@ def reverse_mapping(layer_to_nodes: dict[int, list[Node]]) -> dict[Node, int]:
 
 
 def split_text_with_token_limits(
-    text: str, llm_model_name: str, max_tokens: int, overlap: int = 0
+    text: str, llm_model_name: BaseSummaryModel, max_tokens: int, overlap: int = 0
 ) -> list[str]:
     """
     Splits the input text into smaller chunks based on the tokenizer and maximum allowed tokens.
     """
 
-    tokenizer = tiktoken.encoding_for_model(llm_model_name)
+    tokenizer = tiktoken.encoding_for_model(llm_model_name.model)
 
     # Split the text into sentences using multiple delimiter patterns
     delimiters = ["[^\.!\?]+[\.|!|\?]\s", "[^\.!\?]+[\.|!|\?]$", "[^\.!\?]+$"]

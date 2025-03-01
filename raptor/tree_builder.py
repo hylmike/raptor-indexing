@@ -36,7 +36,7 @@ class TreeBuilderConfig:
         summary_length=None,
         embedding_model=None,
     ):
-        tokenizer = tiktoken.encoding_for_model(summary_model)
+        tokenizer = tiktoken.encoding_for_model(summary_model.model)
         self.tokenizer = tokenizer
 
         if max_tokens is None:
@@ -142,7 +142,7 @@ class TreeBuilder:
         node = Node(
             text=text,
             index=index,
-            children_indices=children_indices,
+            children=children_indices,
             embedding=embedding,
         )
 

@@ -183,7 +183,7 @@ class RaptorClustering(ClusteringAlgorithm):
                 continue
 
             total_length = sum(
-                [len(tokenizer.encode(text)) for text in cluster_nodes]
+                [len(tokenizer.encode(node.text)) for node in cluster_nodes]
             )
 
             # If the total length exceeds the maximum allowed length, recluster this cluster
